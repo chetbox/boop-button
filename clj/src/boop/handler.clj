@@ -1,11 +1,20 @@
 (ns boop.handler
   (:require [compojure.core :refer :all]
             [compojure.route :as route]
-            [ring.middleware.defaults :refer [wrap-defaults site-defaults]]))
+            [ring.util.response :refer [resource-response content-type]]))
 
-(defroutes app-routes
-  (GET "/" [] "Hello World")
+(def boops (atom 0))
+
+(defroutes app
+
+  (GET "/" []
+    (content-type (resource-response "index.html")
+                  "text/html"))
+
+  (GET "/api/boops" []
+    (str @boops))
+
+  (POST "/api/boop" []
+    (str (swap! boops inc)))
+
   (route/not-found "Not Found"))
-
-(def app
-  (wrap-defaults app-routes site-defaults))
