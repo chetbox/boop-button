@@ -35,7 +35,13 @@
 
             #boop {
                 display: block;
+            }
+
+            #boop > .label {
                 position: relative;
+                display: block;
+                width: 100%;
+                height: 100%;
 
                 background-color: red;
                 color: white;
@@ -48,10 +54,13 @@
                 width: 5em;
                 height: 5em;
                 border-radius: 50%;
+
+                transition: transform 100ms, box-shadow 100ms;
             }
 
-            #boop:active {
-                /* TODO: pressed style */
+            #boop:active > .label {
+                transform: translateY(2px);
+                box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             }
 
             #boop h2, h3 {
@@ -87,8 +96,10 @@
         </div>
         <div id="button-container">
             <a id="boop" href="javascript:boop();">
-                <h2>BOOP</h2>
-                <h3>Title goes here</h3>
+                <span class="label">
+                    <h2>BOOP</h2>
+                    <h3>Title goes here</h3>
+                </span>
             </a>
         </div>
     </body>
