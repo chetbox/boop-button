@@ -1,20 +1,47 @@
 (ns boop.handler
-  (:require [compojure.core :refer :all]
+  (:require [boop.db :as db]
+            [compojure.core :refer :all]
             [compojure.route :as route]
+            [ring.middleware.params :refer [wrap-params]]
+            [ring.middleware.json :refer [wrap-json-response]]
             [ring.util.response :refer [resource-response content-type]]))
 
-(def boops (atom 0))
 
-(defroutes app
+(def dummy-user "some guy")
 
-  (GET "/" []
-    (content-type (resource-response "index.html")
-                  "text/html"))
 
-  (GET "/api/boops" []
-    (str @boops))
+(defn app-routes
+  [config]
 
-  (POST "/api/boop" []
-    (str (swap! boops inc)))
+  (db/set-connection! (:db config)) ; TODO: create a 'with-connection'
 
-  (route/not-found "Not Found"))
+  (routes
+
+    (GET "/" []
+      (content-type (resource-response "index.html")
+                    "text/html"))
+
+    (GET "/api/boops" []
+      {:body (db/get-counter dummy-user)})
+
+    (POST "/api/boop" []
+      {:body (db/inc-counter! dummy-user)})
+
+    (PUT "/api/boop" [label]
+      {:body (db/reset-counter! dummy-user label)})
+
+    (route/resources "/")
+
+    (route/not-found "Not Found")))
+
+
+(defn app
+  [config]
+  (-> config
+      app-routes
+      wrap-params
+      wrap-json-response))
+
+
+(def app-debug
+  (app (read-string (slurp "config-debug.edn"))))

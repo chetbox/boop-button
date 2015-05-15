@@ -3,89 +3,7 @@
     <head>
         <title>BOOP</title>
         <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
-        <style>
-            * {
-                font-size: 64px;
-                font-family: 'Roboto Slab', monospace;
-            }
-
-            #graph, #button-container {
-                position: fixed;
-                left: 0;
-                right: 0;
-            }
-
-            #graph {
-                top: 0;
-                display: table;
-                width: 100%;
-                height: 45%;
-            }
-
-            #graph > * {
-                display: table-cell;
-                text-align: center;
-                vertical-align: middle;
-            }
-
-            #button-container {
-                bottom: 0;
-                height: 55%;
-            }
-
-            #boop {
-                display: block;
-            }
-
-            #boop > .label {
-                position: relative;
-                display: block;
-                width: 100%;
-                height: 100%;
-
-                background-color: red;
-                color: white;
-                text-decoration: none;
-                text-align: center;
-                box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
-
-                /* circle, centered */
-                margin: auto;
-                width: 5em;
-                height: 5em;
-                border-radius: 50%;
-
-                transition: transform 100ms, box-shadow 100ms;
-            }
-
-            #boop:active > .label {
-                transform: translateY(2px);
-                box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            }
-
-            #boop h2, h3 {
-                margin: 0;
-                width: 100%;
-                position: absolute;
-            }
-
-            #boop h2 {
-                bottom: 40%;
-            }
-
-            #boop h3 {
-                top: 60%;
-                font-size: 0.25em;
-            }
-
-            .counter {
-                display: block;
-                text-align: center;
-                color: red;
-                font-size: 2em;
-            }
-
-        </style>
+        <link href='css/boop.css' rel='stylesheet' type='text/css'>
         <script text="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     </head>
     <body>
@@ -98,14 +16,15 @@
             <a id="boop" href="javascript:boop();">
                 <span class="label">
                     <h2>BOOP</h2>
-                    <h3>Title goes here</h3>
+                    <h3 class="title">...</h3>
                 </span>
             </a>
         </div>
     </body>
     <script type="text/javascript">
         function update(resp) {
-            $('.counter').text(resp);
+            $('.counter').text(resp.count);
+            $('#boop .title').text(resp.label || 'Something');
         }
 
         function boop() {
