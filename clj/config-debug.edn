@@ -1,6 +1,10 @@
-{:db {:access-key "dummy"  ; For DynamoDB Local, just put some random string
-      :secret-key "dummy" ; For production, put your IAM keys here
+{:dynamodb {:access-key "dummy"  ; For DynamoDB Local, just put some random string
+            :secret-key "dummy" ; For production, put your IAM keys here
 
-      ;; This line below is the only line that is added for DynamoDB Local.
-      ;; Remove it (and add your IAM keys above) to run your code in production.
-      :endpoint "http://localhost:8000"}}
+            ;; This line below is the only line that is added for DynamoDB Local.
+            ;; Remove it (and add your IAM keys above) to run your code in production.
+            :endpoint "http://localhost:8000"}
+
+ :facebook-login {:redirect-uri "http://localhost:3000/login/oauth2-callback"
+                  :client-id "1576688249272097"
+                  :client-secret "ed90cfd27c8f164df5faa0eef6692470"}}
