@@ -46,8 +46,8 @@
 
     /* circle, centered */
     margin: auto;
-    width: 5em;
-    height: 5em;
+    width: 4em;
+    height: 4em;
     border-radius: 50%;
 
     transition: transform 200ms, box-shadow 200ms;
@@ -65,11 +65,11 @@
 }
 
 #boop h2 {
-    bottom: 40%;
+    bottom: 37.5%;
 }
 
 #boop h3 {
-    top: 60%;
+    top: 62.5%;
     font-size: 0.25em;
 }
 
