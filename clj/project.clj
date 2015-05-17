@@ -1,4 +1,4 @@
-(defproject boop "0.1.0"
+(defproject boop "0.1.1"
   :description "Boop"
   :url "http://github.com/chetbox/boop"
   :min-lein-version "2.0.0"
