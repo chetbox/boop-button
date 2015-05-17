@@ -53,4 +53,5 @@
 
 
 (def app-debug
-  (app (read-string (slurp "config/debug.edn"))))
+  (delay
+    (app (read-string (slurp "config/ring-local.edn")))))
