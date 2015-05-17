@@ -7,4 +7,5 @@
 
  :facebook-login {:redirect-uri "http://localhost:3000/login/oauth2-callback"
                   :client-id "1576688249272097"
-                  :client-secret "ed90cfd27c8f164df5faa0eef6692470"}}
+                  :client-secret "ed90cfd27c8f164df5faa0eef6692470"}
+ :server-opts {:port 3000}}

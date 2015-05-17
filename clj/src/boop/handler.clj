@@ -53,4 +53,4 @@
 
 
 (def app-debug
-  (app (read-string (slurp "config-debug.edn"))))
+  (app (read-string (slurp "config/debug.edn"))))
