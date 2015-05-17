@@ -1,6 +1,7 @@
 * {
     font-size: 64px;
     font-family: 'Roboto Slab', monospace;
+    -webkit-tap-highlight-color: transparent;
 }
 
 #graph, #button-container {
